@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "dgSpecHash": "yr6zMylvxeoevc7Mn1KaOxuyjnlR8o0RtHUk1em16SLC8gekV5JWB1K47DO1MNkHz9hpqSkllwXm7LVUcksObg==",
+  "success": true,
+  "projectFilePath": "/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/WebAAPI.csproj",
+  "expectedPackageFiles": [
+    "/Users/ahmetkarabudak/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/Users/ahmetkarabudak/.nuget/packages/microsoft.openapi/1.6.14/microsoft.openapi.1.6.14.nupkg.sha512",
+    "/Users/ahmetkarabudak/.nuget/packages/swashbuckle.aspnetcore/6.7.0/swashbuckle.aspnetcore.6.7.0.nupkg.sha512",
+    "/Users/ahmetkarabudak/.nuget/packages/swashbuckle.aspnetcore.swagger/6.7.0/swashbuckle.aspnetcore.swagger.6.7.0.nupkg.sha512",
+    "/Users/ahmetkarabudak/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.7.0/swashbuckle.aspnetcore.swaggergen.6.7.0.nupkg.sha512",
+    "/Users/ahmetkarabudak/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.7.0/swashbuckle.aspnetcore.swaggerui.6.7.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1803",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "You are running the 'restore' operation with an 'HTTP' source, 'http://nuget.elsabilisim.com:9999/v3/index.json'. Non-HTTPS access will be removed in a future version. Consider migrating to an 'HTTPS' source."
+    }
+  ]
+}
