@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "yr6zMylvxeoevc7Mn1KaOxuyjnlR8o0RtHUk1em16SLC8gekV5JWB1K47DO1MNkHz9hpqSkllwXm7LVUcksObg==",
+  "dgSpecHash": "6SSwvWC9vtbvFrDy1riAdYTUTR1G6zDuH76ZsEszaxvQo0F+1RIs9ClKK3qMWaOjFa3oZia0O8pnovA2qB2bFw==",
   "success": true,
   "projectFilePath": "/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/WebAAPI.csproj",
   "expectedPackageFiles": [
@@ -9,7 +9,8 @@
     "/Users/ahmetkarabudak/.nuget/packages/swashbuckle.aspnetcore/6.7.0/swashbuckle.aspnetcore.6.7.0.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/swashbuckle.aspnetcore.swagger/6.7.0/swashbuckle.aspnetcore.swagger.6.7.0.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.7.0/swashbuckle.aspnetcore.swaggergen.6.7.0.nupkg.sha512",
-    "/Users/ahmetkarabudak/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.7.0/swashbuckle.aspnetcore.swaggerui.6.7.0.nupkg.sha512"
+    "/Users/ahmetkarabudak/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.7.0/swashbuckle.aspnetcore.swaggerui.6.7.0.nupkg.sha512",
+    "/Users/ahmetkarabudak/.nuget/packages/ts.result/8.0.6/ts.result.8.0.6.nupkg.sha512"
   ],
   "logs": [
     {

@@ -1,5 +1,8 @@
+using System.Net;
+using System.Text;
 using System.Text.Json;
 using Microsoft.Extensions.Options;
+using TS.Result;
 using WebAAPI.Dtos;
 using WebAAPI.Options;
 
@@ -20,25 +23,68 @@ namespace WebAAPI.Services
             data.Add(grantType);
             data.Add(clientId);
             data.Add(clientSecret);
-            var message = await client.PostAsync(endpoint, new FormUrlEncodedContent(data), cancellationToken);
 
+            Result<GetAccessTokenResponseDto> result = await PostUrlEncodedFormAsync<GetAccessTokenResponseDto>(endpoint, data, false, cancellationToken);
+
+            return result.Data!.AccessToken;
+        }
+
+        public async Task<Result<T>> PostAsync<T>(string endpoint, object data, bool requiredToken = false, CancellationToken cancellationToken = default)
+        {
+            string stringData = JsonSerializer.Serialize(data);
+            var content = new StringContent(stringData, Encoding.UTF8, "application/json");
+
+            HttpClient httpClient = new HttpClient();
+
+            if (requiredToken)
+            {
+                string token = await GetAccessToken();
+
+                httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+            }
+
+            var message = await httpClient.PostAsync(endpoint, content, cancellationToken);
             var response = await message.Content.ReadAsStringAsync();
 
             if (!message.IsSuccessStatusCode)
             {
-                if (message.StatusCode == System.Net.HttpStatusCode.BadRequest)
-                {
-                    var errorResultForBadRequest = JsonSerializer.Deserialize<BadRequestErrorResponseDto>(response);
-                    throw new ArgumentException(errorResultForBadRequest!.ErrorMessage);
-                }
+                var errorResultForBadRequest = JsonSerializer.Deserialize<BadRequestErrorResponseDto>(response);
+                return Result<T>.Failure(errorResultForBadRequest!.ErrorMessage);
+            }
+            if (message.StatusCode == HttpStatusCode.Created || message.StatusCode == HttpStatusCode.NoContent)
+            {
+                return Result<T>.Succeed(default!);
+            }
+            var obj = JsonSerializer.Deserialize<T>(response);
+            return Result<T>.Succeed(obj!);
+        }
 
-                var errorResultForOther = JsonSerializer.Deserialize<BadRequestErrorResponseDto>(response);
-                throw new ArgumentException(errorResultForOther!.ErrorMessage);
+        public async Task<Result<T>> PostUrlEncodedFormAsync<T>(string endpoint, List<KeyValuePair<string, string>> data, bool requiredToken = false, CancellationToken cancellationToken = default)
+        {
+
+            HttpClient httpClient = new HttpClient();
+
+            if (requiredToken)
+            {
+                string token = await GetAccessToken();
+
+                httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
             }
 
-            var result = JsonSerializer.Deserialize<GetAccessTokenResponseDto>(response);
+            var message = await httpClient.PostAsync(endpoint, new FormUrlEncodedContent(data), cancellationToken);
+            var response = await message.Content.ReadAsStringAsync();
 
-            return result!.AccessToken;
+            if (!message.IsSuccessStatusCode)
+            {
+                var errorResultForBadRequest = JsonSerializer.Deserialize<BadRequestErrorResponseDto>(response);
+                return Result<T>.Failure(errorResultForBadRequest!.ErrorMessage);
+            }
+            if (message.StatusCode == HttpStatusCode.Created || message.StatusCode == HttpStatusCode.NoContent)
+            {
+                return Result<T>.Succeed(default!);
+            }
+            var obj = JsonSerializer.Deserialize<T>(response);
+            return Result<T>.Succeed(obj!);
         }
     }
 }

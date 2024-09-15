@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v8.0": {
       "WebAAPI/1.0.0": {
         "dependencies": {
-          "Swashbuckle.AspNetCore": "6.7.0"
+          "Swashbuckle.AspNetCore": "6.7.0",
+          "TS.Result": "8.0.6"
         },
         "runtime": {
           "WebAAPI.dll": {}
@@ -58,6 +59,14 @@
           "lib/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
             "assemblyVersion": "6.7.0.0",
             "fileVersion": "6.7.0.593"
+          }
+        }
+      },
+      "TS.Result/8.0.6": {
+        "runtime": {
+          "lib/net8.0/TS.Result.dll": {
+            "assemblyVersion": "8.0.6.0",
+            "fileVersion": "8.0.6.0"
           }
         }
       }
@@ -110,6 +119,13 @@
       "sha512": "sha512-Oxyf8IcU28J0FlEVpBhywIAMRo1gvOERMyIZ56iOdyLJSkhz4MJRo4MDR++q+gh+R2f2+4KnATUvpU4wHweZJg==",
       "path": "swashbuckle.aspnetcore.swaggerui/6.7.0",
       "hashPath": "swashbuckle.aspnetcore.swaggerui.6.7.0.nupkg.sha512"
+    },
+    "TS.Result/8.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kete7Z9LJ7ms1tcnMKnyQ8AjZ9CWRPHWg1pYwNH4eIJV5wZuPWKDPuHuw0Oe5nq7dvh6IRw9+09PWNR0HvHgMg==",
+      "path": "ts.result/8.0.6",
+      "hashPath": "ts.result.8.0.6.nupkg.sha512"
     }
   }
 }

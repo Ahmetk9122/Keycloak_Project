@@ -88,6 +88,15 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "TS.Result/8.0.6": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/TS.Result.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/TS.Result.dll": {}
+        }
       }
     }
   },
@@ -439,11 +448,27 @@
         "swashbuckle.aspnetcore.swaggerui.6.7.0.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "TS.Result/8.0.6": {
+      "sha512": "kete7Z9LJ7ms1tcnMKnyQ8AjZ9CWRPHWg1pYwNH4eIJV5wZuPWKDPuHuw0Oe5nq7dvh6IRw9+09PWNR0HvHgMg==",
+      "type": "package",
+      "path": "ts.result/8.0.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "icon.jpg",
+        "lib/net8.0/TS.Result.dll",
+        "ts.result.8.0.6.nupkg.sha512",
+        "ts.result.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Swashbuckle.AspNetCore >= 6.7.0"
+      "Swashbuckle.AspNetCore >= 6.7.0",
+      "TS.Result >= 8.0.6"
     ]
   },
   "packageFolders": {
@@ -487,6 +512,10 @@
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[6.7.0, )"
+          },
+          "TS.Result": {
+            "target": "Package",
+            "version": "[8.0.6, )"
           }
         },
         "imports": [

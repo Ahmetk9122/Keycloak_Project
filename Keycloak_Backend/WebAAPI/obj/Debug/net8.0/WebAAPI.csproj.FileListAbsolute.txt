@@ -31,3 +31,4 @@
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/obj/Debug/net8.0/WebAAPI.csproj.AssemblyReference.cache
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/obj/Debug/net8.0/WebAAPI.MvcApplicationPartsAssemblyInfo.cs
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/obj/Debug/net8.0/WebAAPI.csproj.CopyComplete
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/bin/Debug/net8.0/TS.Result.dll
