@@ -48,8 +48,13 @@ namespace WebAAPI.Services
 
             if (!message.IsSuccessStatusCode)
             {
-                var errorResultForBadRequest = JsonSerializer.Deserialize<BadRequestErrorResponseDto>(response);
-                return Result<T>.Failure(errorResultForBadRequest!.ErrorMessage);
+                if (message.StatusCode == HttpStatusCode.BadRequest)
+                {
+                    var errorResultForBadRequest = JsonSerializer.Deserialize<BadRequestErrorResponseDto>(response);
+                    return Result<T>.Failure(errorResultForBadRequest!.ErrorDescription);
+                }
+                var errorResultForOther = JsonSerializer.Deserialize<ErrorResponseDto>(response);
+                return Result<T>.Failure(errorResultForOther!.ErrorMessage);
             }
             if (message.StatusCode == HttpStatusCode.Created || message.StatusCode == HttpStatusCode.NoContent)
             {
@@ -76,8 +81,18 @@ namespace WebAAPI.Services
 
             if (!message.IsSuccessStatusCode)
             {
-                var errorResultForBadRequest = JsonSerializer.Deserialize<BadRequestErrorResponseDto>(response);
-                return Result<T>.Failure(errorResultForBadRequest!.ErrorMessage);
+                if (message.StatusCode == HttpStatusCode.BadRequest)
+                {
+                    var errorResultForBadRequest = JsonSerializer.Deserialize<BadRequestErrorResponseDto>(response);
+                    return Result<T>.Failure(errorResultForBadRequest!.ErrorDescription);
+                }
+                else if (message.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    var errorResultForBadRequest = JsonSerializer.Deserialize<BadRequestErrorResponseDto>(response);
+                    return Result<T>.Failure(errorResultForBadRequest!.ErrorDescription);
+                }
+                var errorResultForOther = JsonSerializer.Deserialize<ErrorResponseDto>(response);
+                return Result<T>.Failure(errorResultForOther!.ErrorMessage);
             }
             if (message.StatusCode == HttpStatusCode.Created || message.StatusCode == HttpStatusCode.NoContent)
             {

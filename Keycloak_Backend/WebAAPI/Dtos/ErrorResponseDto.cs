@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebAAPI.Dtos
 {
-    public sealed class ErrorResponseDto
+    public sealed class BadRequestErrorResponseDto
     {
         [JsonPropertyName("error")]
         public string Error { get; set; } = default!;
@@ -14,7 +14,7 @@ namespace WebAAPI.Dtos
         public string ErrorDescription { get; set; } = default!;
     }
 
-    public sealed class BadRequestErrorResponseDto
+    public sealed class ErrorResponseDto
     {
         [JsonPropertyName("error")]
         public string Field { get; set; } = default!;
