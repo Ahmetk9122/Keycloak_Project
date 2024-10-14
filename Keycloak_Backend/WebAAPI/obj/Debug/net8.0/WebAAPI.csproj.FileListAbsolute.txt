@@ -32,3 +32,17 @@
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/obj/Debug/net8.0/WebAAPI.MvcApplicationPartsAssemblyInfo.cs
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/obj/Debug/net8.0/WebAAPI.csproj.CopyComplete
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/bin/Debug/net8.0/TS.Result.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/bin/Debug/net8.0/Keycloak.AuthServices.Authentication.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/bin/Debug/net8.0/Keycloak.AuthServices.Common.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/bin/Debug/net8.0/Keycloak.AuthServices.Authorization.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/Keycloak_Project/Keycloak_Backend/WebAAPI/bin/Debug/net8.0/System.Diagnostics.DiagnosticSource.dll

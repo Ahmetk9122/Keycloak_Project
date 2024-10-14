@@ -1,4 +1,5 @@
 using System.Net;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json;
 using Microsoft.Extensions.Options;
@@ -95,7 +96,111 @@ namespace WebAAPI.Services
             var obj = JsonSerializer.Deserialize<T>(response);
             return Result<T>.Succeed(obj!);
         }
+        public async Task<Result<T>> PutAsync<T>(string endpoint, object data, bool requiredToken = false, CancellationToken cancellationToken = default)
+        {
+            string stringData = JsonSerializer.Serialize(data);
+            var content = new StringContent(stringData, Encoding.UTF8, "application/json");
 
+            HttpClient httpClient = new HttpClient();
+
+            if (requiredToken)
+            {
+                string token = await GetAccessToken();
+
+                httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+            }
+
+            var message = await httpClient.PutAsync(endpoint, content, cancellationToken);
+            var response = await message.Content.ReadAsStringAsync();
+
+            if (!message.IsSuccessStatusCode)
+            {
+                if (message.StatusCode == HttpStatusCode.BadRequest)
+                {
+                    var errorResultForBadRequest = JsonSerializer.Deserialize<BadRequestErrorResponseDto>(response);
+                    return Result<T>.Failure(errorResultForBadRequest!.ErrorDescription);
+                }
+                var errorResultForOther = JsonSerializer.Deserialize<ErrorResponseDto>(response);
+                return Result<T>.Failure(errorResultForOther!.ErrorMessage);
+            }
+            if (message.StatusCode == HttpStatusCode.Created || message.StatusCode == HttpStatusCode.NoContent)
+            {
+                return Result<T>.Succeed(default!);
+            }
+            var obj = JsonSerializer.Deserialize<T>(response);
+            return Result<T>.Succeed(obj!);
+        }
+
+        public async Task<Result<T>> DeleteAsync<T>(string endpoint, bool requiredToken = false, CancellationToken cancellationToken = default)
+        {
+
+            HttpClient httpClient = new HttpClient();
+
+            if (requiredToken)
+            {
+                string token = await GetAccessToken();
+
+                httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+            }
+
+            var message = await httpClient.DeleteAsync(endpoint, cancellationToken);
+            var response = await message.Content.ReadAsStringAsync();
+
+            if (!message.IsSuccessStatusCode)
+            {
+                if (message.StatusCode == HttpStatusCode.BadRequest)
+                {
+                    var errorResultForBadRequest = JsonSerializer.Deserialize<BadRequestErrorResponseDto>(response);
+                    return Result<T>.Failure(errorResultForBadRequest!.ErrorDescription);
+                }
+                var errorResultForOther = JsonSerializer.Deserialize<ErrorResponseDto>(response);
+                return Result<T>.Failure(errorResultForOther!.ErrorMessage);
+            }
+            if (message.StatusCode == HttpStatusCode.Created || message.StatusCode == HttpStatusCode.NoContent)
+            {
+                return Result<T>.Succeed(default!);
+            }
+            var obj = JsonSerializer.Deserialize<T>(response);
+            return Result<T>.Succeed(obj!);
+        }
+
+
+        public async Task<Result<T>> DeleteAsync<T>(string endpoint, object data, bool requiredToken = false, CancellationToken cancellationToken = default)
+        {
+
+            HttpClient httpClient = new HttpClient();
+
+            if (requiredToken)
+            {
+                string token = await GetAccessToken();
+
+                httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+            }
+            //Delete de body li gönderme işlemi
+            var request = new HttpRequestMessage(HttpMethod.Delete, endpoint);
+            string str = JsonSerializer.Serialize(data);
+            request.Content = new StringContent(str, Encoding.UTF8, "application/json");
+
+            var message = await httpClient.SendAsync(request, cancellationToken);
+            var response = await message.Content.ReadAsStringAsync();
+
+            if (!message.IsSuccessStatusCode)
+            {
+                if (message.StatusCode == HttpStatusCode.BadRequest)
+                {
+                    var errorResultForBadRequest = JsonSerializer.Deserialize<BadRequestErrorResponseDto>(response);
+                    return Result<T>.Failure(errorResultForBadRequest!.ErrorDescription);
+                }
+                var errorResultForOther = JsonSerializer.Deserialize<ErrorResponseDto>(response);
+                return Result<T>.Failure(errorResultForOther!.ErrorMessage);
+            }
+            if (message.StatusCode == HttpStatusCode.Created || message.StatusCode == HttpStatusCode.NoContent)
+            {
+                return Result<T>.Succeed(default!);
+            }
+            var obj = JsonSerializer.Deserialize<T>(response);
+            return Result<T>.Succeed(obj!);
+        }
         public async Task<Result<T>> PostUrlEncodedFormAsync<T>(string endpoint, List<KeyValuePair<string, string>> data, bool requiredToken = false, CancellationToken cancellationToken = default)
         {
 
