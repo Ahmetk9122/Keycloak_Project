@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { LoginResponse } from '../models/LoginResponse';
 import { Login } from '../models/Login';
 import { Result } from '../models/Result';
+import { Register } from '../models/Register';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,10 @@ export class AuthService extends BaseService {
   }
 
   login(login: Login): Observable<Result<LoginResponse>> {
-    debugger;
     return this.postBase('auth/login', login, false);
+  }
+
+  register(register: Register): Observable<Result<LoginResponse>> {
+    return this.postBase('auth/register', register, false);
   }
 }
