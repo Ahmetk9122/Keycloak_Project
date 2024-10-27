@@ -13,7 +13,7 @@ export const routes: Routes = [
   {
     path: '',
     component: LayoutsComponent,
-    canActivateChild: [authGuard],
+    // canActivateChild: [authGuard],
     children: [
       { path: '', component: HomeComponent },
       { path: 'users', component: UsersComponent },
