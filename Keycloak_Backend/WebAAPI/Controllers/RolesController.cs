@@ -49,7 +49,7 @@ namespace WebAAPI.Controllers
 
             return StatusCode(response.StatusCode, response);
         }
-        [HttpDelete]
+        [HttpDelete("{name}")]
         public async Task<IActionResult> DeleteRoleByName(string name, CancellationToken cancellationToken)
         {
             string endpoint = $"{options.Value.HostName}/admin/realms/{options.Value.Realm}/clients/{options.Value.ClientUUID}/roles/{name}";
