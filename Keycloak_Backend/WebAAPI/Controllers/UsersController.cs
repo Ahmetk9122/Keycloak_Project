@@ -17,8 +17,8 @@ namespace WebAAPI.Controllers
     [Authorize]
     public sealed class UsersController(KeycloakService keycloakService, IOptions<KeycloakConfiguration> options) : ControllerBase
     {
-        [Authorize("UserGetAll")]
         [HttpGet]
+        [Authorize("UserGetAll")]
         public async Task<IActionResult> GetAllUsers(CancellationToken cancellationToken)
         {
             string endpoint = $"{options.Value.HostName}/admin/realms/{options.Value.Realm}/users";
@@ -38,7 +38,7 @@ namespace WebAAPI.Controllers
             return StatusCode(response.StatusCode, response);
         }
         [Authorize("UserGetAll")]
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id, CancellationToken cancellationToken)
         {
             string endpoint = $"{options.Value.HostName}/admin/realms/{options.Value.Realm}/users/{id}";
@@ -49,7 +49,7 @@ namespace WebAAPI.Controllers
         }
 
         [Authorize("UserUpdate")]
-        [HttpPut]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(Guid id, UpdateUserDto updateUserDto, CancellationToken cancellationToken)
         {
             string endpoint = $"{options.Value.HostName}/admin/realms/{options.Value.Realm}/users/{id}";
@@ -65,7 +65,7 @@ namespace WebAAPI.Controllers
         }
 
         [Authorize("UserDelete")]
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUserById(Guid id, CancellationToken cancellationToken)
         {
             string endpoint = $"{options.Value.HostName}/admin/realms/{options.Value.Realm}/users/{id}";

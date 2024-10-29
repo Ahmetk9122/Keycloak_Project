@@ -1,1 +1,89 @@
-<p>users works!</p>
+<div class="mt-4">
+    <h1>Users Page</h1>
+</div>
+<div class="mt-4">
+    <flexi-grid
+    [data]="users"
+    [showCaption]="true"
+    captionTitle="User List"
+    [filterable]="true"
+    [sortable]="true"
+    [draggable]="true"
+    themeClass="light"
+    [commandColumnTemplate]="customButtonColumnTemplate" 
+    [commandColumnTextAlign]="'center'" 
+    [stickyCommandColumn]="true" 
+    [showCommandColumn]="true"> 
+
+        <flexi-grid-column field="username" title="User Name"></flexi-grid-column>
+        <flexi-grid-column field="firstName" title="First Name"></flexi-grid-column>
+        <flexi-grid-column field="lastName" title="Last Name"></flexi-grid-column>
+        <flexi-grid-column field="email" title="Email"></flexi-grid-column>
+        <flexi-grid-column field="emailVerified"  textAlign="center" title="Email Verified">
+            <!-- Eklediğiniz özel column a özel filter alanı da ekleyebiliyorsunuz -->
+            <ng-template flexiGridHeaderTemplate>
+              <input type="search" class="flexi-grid-filter-input" placeholder="Custom filter...">
+            </ng-template> 
+      
+            <!-- let-item ile bu döngüdeki tüm datayı yakalıyoruz -->
+            <ng-template flexiGridCellTemplate let-item let-rowIndex="rowIndex">
+                @if(item.emailVerified){
+                    <span class="my-alert alert-success">Verified</span>
+                }@else {
+                    <span class="my-alert alert-danger">Not Verified</span>
+                } 
+            </ng-template>
+          </flexi-grid-column>
+
+          <flexi-grid-column field="enabled"  textAlign="center" title="Is Active">
+
+            <ng-template flexiGridHeaderTemplate>
+              <input type="search" class="flexi-grid-filter-input" placeholder="Custom filter...">
+            </ng-template> 
+
+            <ng-template flexiGridCellTemplate let-item let-rowIndex="rowIndex">
+                @if(item.enabled){
+                    <span class="my-alert alert-success">Active</span>
+                }@else {
+                    <span class="my-alert alert-danger">Passive</span>
+                }      
+            </ng-template>
+          </flexi-grid-column>
+
+          <ng-template #customButtonColumnTemplate let-item let-index="index">
+            
+            <flexi-button (click)="deleteById(item.id)" class=" ms-1" btnColor="danger" btnText="Sil">
+                <!-- <i class="bi bi-trash"></i> -->
+            </flexi-button>
+        </ng-template>
+    
+
+<!-- 
+
+        <flexi-grid-column field="emailVerified" textAlign="center" title="Email Verified">
+            <ng-template flexiGridCellTemplate let-item="item">
+                @if(item.emailVerified){
+                    <span class="my-alert alert-success">Verified</span>
+                }@else {
+                    <span class="my-alert alert-danger">Not Verified</span>
+                }                
+            </ng-template>
+        </flexi-grid-column>
+        <flexi-grid-column field="enabled" textAlign="center" title="Is Active" >
+            <ng-template flexiGridCellTemplate let-item="item">
+                @if(item.enabled){
+                    <span class="my-alert alert-success">Active</span>
+                }@else {
+                    <span class="my-alert alert-danger">Passive</span>
+                }                
+            </ng-template>
+        </flexi-grid-column>
+        <flexi-grid-column title="Operations" textAlign="center" >
+            <ng-template flexiGridCellTemplate let-item="item">
+                <button (click)="deleteById(item.id)" class="btn btn-outline-danger">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </ng-template>
+        </flexi-grid-column> -->
+</flexi-grid>
+</div>

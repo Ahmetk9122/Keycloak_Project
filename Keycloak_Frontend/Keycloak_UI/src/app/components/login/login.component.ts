@@ -30,10 +30,8 @@ export class LoginComponent implements OnInit {
   // #endregion
   //  #region [ Entity ]
   loginFromAPI(login: Login) {
-    debugger;
     this.authService.login(login).subscribe(
       (response) => {
-        debugger;
         response.isSuccessful;
         if (response.isSuccessful) {
           localStorage.setItem('access-token', response.data!.access_token);

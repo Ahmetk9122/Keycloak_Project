@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Params, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { Injector } from '@angular/core';
+import { Result } from '../models/Result';
 
 export class BaseService {
   protected readonly baseUrl: string;
@@ -28,26 +29,29 @@ export class BaseService {
     var httpOptions: any;
 
     var headers = new HttpHeaders();
-    headers = headers.append('Accept', 'application/json');
-    headers = headers.append('Access-Control-Allow-Origin', '*');
+    // headers = headers.append('Accept', 'application/json');
+    // headers = headers.append('Access-Control-Allow-Origin', '*');
+    // debugger;
+    // if (isAuthroized) {
+    //   headers = headers.append('Authorization', 'Bearer ' + this.token);
+    // }
+    // if (customHeaders) {
+    //   var customHeaderKeys = customHeaders.keys();
+    //   for (var i = 0; i < customHeaderKeys.length; i++) {
+    //     var key = customHeaderKeys[i];
+    //     var value = customHeaders.get(key);
+    //     if (value) headers = headers.append(key, value);
+    //   }
+    // }
 
-    if (isAuthroized) {
-      headers = headers.append('Authorization', 'Bearer ' + this.token);
-    }
-    if (customHeaders) {
-      var customHeaderKeys = customHeaders.keys();
-      for (var i = 0; i < customHeaderKeys.length; i++) {
-        var key = customHeaderKeys[i];
-        var value = customHeaders.get(key);
-        if (value) headers = headers.append(key, value);
-      }
-    }
-
-    httpOptions = {
-      headers: headers,
-    };
-
-    return this.http.get<TEntity>(newUrl, httpOptions);
+    // httpOptions = {
+    //   headers: headers,
+    // };
+    return this.http.get<Result<TEntity>>(newUrl, {
+      headers: {
+        Authorization: 'Bearer ' + this.token,
+      },
+    });
   }
   protected postBase<TEntity>(
     uriPath: string,

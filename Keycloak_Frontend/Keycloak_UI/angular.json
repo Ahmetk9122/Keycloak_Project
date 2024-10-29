@@ -31,7 +31,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/flexi-toast/src/flexi-toast.css"
+              "node_modules/flexi-toast/src/flexi-toast.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
             ],
             "scripts": []
           },

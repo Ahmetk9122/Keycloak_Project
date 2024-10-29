@@ -30,10 +30,8 @@ export class RegisterComponent implements OnInit {
   // #endregion
   //  #region [ Entity ]
   registerFromAPI(register: Register) {
-    debugger;
     this.authService.register(register).subscribe(
       (response) => {
-        debugger;
         response.isSuccessful;
         if (response.isSuccessful) {
           this.router.navigateByUrl('/login');

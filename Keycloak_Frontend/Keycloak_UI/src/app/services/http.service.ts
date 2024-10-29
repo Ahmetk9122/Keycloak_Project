@@ -11,7 +11,7 @@ export class HttpService {
   protected readonly baseUrl: string;
   private token: string;
   constructor(private http: HttpClient, private toast: FlexiToastService) {
-    this.baseUrl = 'https://localhost:7067/api/';
+    this.baseUrl = 'https://localhost:7067/api';
     this.token = localStorage.getItem('access-token') ?? '';
   }
 
