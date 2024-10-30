@@ -47,11 +47,7 @@ export class BaseService {
     // httpOptions = {
     //   headers: headers,
     // };
-    return this.http.get<Result<TEntity>>(newUrl, {
-      headers: {
-        Authorization: 'Bearer ' + this.token,
-      },
-    });
+    return this.http.get<Result<TEntity>>(newUrl);
   }
   protected postBase<TEntity>(
     uriPath: string,
@@ -62,13 +58,7 @@ export class BaseService {
     var newUrl = this.baseUrl + uriPath;
     var httpOptions: any;
     var headers = new HttpHeaders();
-    headers = headers.append('Accept', 'application/json');
-    // headers = headers.set("Content-type", "application/x-www-form-urlencoded");
-    headers = headers.append('Access-Control-Allow-Origin', '*');
 
-    if (isAuthroized) {
-      headers = headers.append('Authorization', 'Bearer ' + this.token);
-    }
     if (customHeaders) {
       var customHeaderKeys = customHeaders.keys();
       for (var i = 0; i < customHeaderKeys.length; i++) {
@@ -93,12 +83,6 @@ export class BaseService {
     var newUrl = this.baseUrl + uriPath;
     var httpOptions: any;
     var headers = new HttpHeaders();
-    headers = headers.append('Accept', 'application/json');
-    headers = headers.append('Access-Control-Allow-Origin', '*');
-
-    if (isAuthroized) {
-      headers = headers.append('Authorization', 'Bearer ' + this.token);
-    }
 
     httpOptions = {
       headers: headers,
@@ -116,12 +100,6 @@ export class BaseService {
     var newUrl = useCustomUrl ? uriPath : this.baseUrl + uriPath;
     var httpOptions: any;
     var headers = new HttpHeaders();
-    headers = headers.append('Accept', 'application/json');
-    headers = headers.append('Access-Control-Allow-Origin', '*');
-
-    if (isAuthroized) {
-      headers = headers.append('Authorization', 'Bearer ' + this.token);
-    }
 
     httpOptions = {
       headers: headers,
@@ -139,11 +117,6 @@ export class BaseService {
     var newUrl = this.baseUrl + uriPath;
     var httpOptions: any;
     var headers = new HttpHeaders();
-    headers = headers.append('Accept', 'application/json');
-
-    if (isAuthroized) {
-      headers = headers.append('Authorization', 'Bearer ' + this.token);
-    }
 
     httpOptions = {
       headers: headers,
@@ -166,11 +139,7 @@ export class BaseService {
     var newUrl = this.baseUrl + uriPath;
     var httpOptions: any;
     var headers = new HttpHeaders();
-    headers = headers.append('Accept', 'application/json');
 
-    if (isAuthroized) {
-      headers = headers.append('Authorization', 'Bearer ' + this.token);
-    }
     if (customHeaders) {
       var customHeaderKeys = customHeaders.keys();
       for (var i = 0; i < customHeaderKeys.length; i++) {
@@ -196,11 +165,7 @@ export class BaseService {
     var newUrl = this.baseUrl + uriPath;
     var httpOptions: any;
     var headers = new HttpHeaders();
-    headers = headers.append('Accept', 'application/json');
 
-    if (isAuthroized) {
-      headers = headers.append('Authorization', 'Bearer ' + this.token);
-    }
     if (customHeaders) {
       var customHeaderKeys = customHeaders.keys();
       for (var i = 0; i < customHeaderKeys.length; i++) {
@@ -225,11 +190,7 @@ export class BaseService {
     var newUrl = this.baseUrl + uriPath;
     var httpOptions: any;
     var headers = new HttpHeaders();
-    headers = headers.append('Accept', 'application/json');
 
-    if (isAuthroized) {
-      headers = headers.append('Authorization', 'Bearer ' + this.token);
-    }
     if (customHeaders) {
       var customHeaderKeys = customHeaders.keys();
       for (var i = 0; i < customHeaderKeys.length; i++) {
@@ -244,10 +205,5 @@ export class BaseService {
     };
 
     return this.http.patch<TEntity>(newUrl, parameters, httpOptions);
-  }
-
-  protected get token() {
-    const token = localStorage.getItem('access-token');
-    return token;
   }
 }

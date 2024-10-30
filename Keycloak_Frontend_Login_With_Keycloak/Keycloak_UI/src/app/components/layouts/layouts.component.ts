@@ -5,6 +5,7 @@ import {
   RouterLinkActive,
   RouterOutlet,
 } from '@angular/router';
+import { KeycloakService } from 'keycloak-angular';
 
 @Component({
   selector: 'app-layouts',
@@ -20,14 +21,14 @@ export class LayoutsComponent {
   /**
    *
    */
-  constructor(private router: Router) {}
+  constructor(private keycloakService: KeycloakService) {}
   // #endregion
   //  #region [ Entity ]
   // #endregion
   //  #region [ UI Tools ]
   logOut() {
     localStorage.removeItem('access-token');
-    this.router.navigateByUrl('/login');
+    this.keycloakService.logout();
   }
   // #endregion
   //  #region [ Validations ]
